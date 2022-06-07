@@ -146,11 +146,11 @@ RUN sudo apt-get update && \
     tar -xzvf ruby-install-0.8.3.tar.gz && \
     cd ruby-install-0.8.3 && \
     sudo make install && \
-    ruby-install --cleanup ruby 3.1.1 && \
+    ruby-install --cleanup ruby 2.7.4 && \
     rm -r /tmp/ruby-install-* && \
     sudo rm -rf /var/lib/apt/lists/*
 
-ENV PATH ${HOME}/.rubies/ruby-3.1.1/bin:${PATH}
+ENV PATH ${HOME}/.rubies/ruby-2.7.4/bin:${PATH}
 RUN echo 'gem: --env-shebang --no-rdoc --no-ri' >> ~/.gemrc && gem install bundler -v 2.3.15
 
 # Download and install Android SDK
