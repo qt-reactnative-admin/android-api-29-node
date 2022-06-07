@@ -142,16 +142,16 @@ RUN sudo apt-get update && \
 
 # Install Ruby
 RUN sudo apt-get update && \
-    cd /tmp && wget -O ruby-install-0.6.1.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.1.tar.gz && \
-    tar -xzvf ruby-install-0.6.1.tar.gz && \
-    cd ruby-install-0.6.1 && \
+    cd /tmp && wget -O ruby-install-0.8.3.tar.gz https://github.com/postmodern/ruby-install/archive/v0.8.3.tar.gz && \
+    tar -xzvf ruby-install-0.8.3.tar.gz && \
+    cd ruby-install-0.8.3 && \
     sudo make install && \
-    ruby-install --cleanup ruby 2.6.1 && \
+    ruby-install --cleanup ruby 3.1.1 && \
     rm -r /tmp/ruby-install-* && \
     sudo rm -rf /var/lib/apt/lists/*
 
-ENV PATH ${HOME}/.rubies/ruby-2.6.1/bin:${PATH}
-RUN echo 'gem: --env-shebang --no-rdoc --no-ri' >> ~/.gemrc && gem install bundler -v 2.1.4
+ENV PATH ${HOME}/.rubies/ruby-3.1.1/bin:${PATH}
+RUN echo 'gem: --env-shebang --no-rdoc --no-ri' >> ~/.gemrc && gem install bundler -v 2.3.15
 
 # Download and install Android SDK
 RUN sudo mkdir -p ${android_home} && \
