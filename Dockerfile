@@ -146,12 +146,12 @@ RUN sudo apt-get update && \
     tar -xzvf ruby-install-0.8.3.tar.gz && \
     cd ruby-install-0.8.3 && \
     sudo make install && \
-    ruby-install --cleanup ruby 2.7.4 && \
+    ruby-install --cleanup ruby 2.7.5 && \
     rm -r /tmp/ruby-install-* && \
     sudo rm -rf /var/lib/apt/lists/*
 
-ENV PATH ${HOME}/.rubies/ruby-2.7.4/bin:${PATH}
-RUN echo 'gem: --env-shebang --no-rdoc --no-ri' >> ~/.gemrc && gem install bundler -v 2.3.15
+ENV PATH ${HOME}/.rubies/ruby-2.7.5/bin:${PATH}
+RUN echo 'gem: --env-shebang --no-rdoc --no-ri' >> ~/.gemrc && gem install bundler -v 2.3.11
 
 # Download and install Android SDK
 RUN sudo mkdir -p ${android_home} && \
@@ -287,6 +287,8 @@ RUN git clone https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew/Homebr
   && mkdir /home/linuxbrew/.linuxbrew/bin \
   && ln -s ../Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/ \
   && brew config
+
+RUN sudo chmod -R 777 /home/linuxbrew/.linuxbrew/Homebrew
 
 # Basic smoke test
 RUN node --version
